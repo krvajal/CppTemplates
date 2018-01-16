@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <set>
 
 // The code below is currently broken and cannot compile.
 // You need to make the function completely generic by using template types for its parameters.
@@ -13,10 +14,15 @@
 // BONUS assignment: make use of move semantics for greater efficiency.
 
 template <typename T, typename U>
-void AddValue(T &container, const U& value) {
-	container.emplace_back(value);
+void AddValue(T &container,  U&& value) {
+	container.emplace_back(std::move(value));
 }
 
+
+template <typename T> 
+void AddValue(std::set<T>& container, T&& value){
+	container.emplace(std::move(value));
+}
 //Do not edit anything below this line. You also don't need to read it to pass this test.
 
 int main() {
