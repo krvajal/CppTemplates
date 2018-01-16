@@ -12,7 +12,8 @@
 //
 // BONUS assignment: make use of move semantics for greater efficiency.
 
-void AddValue(std::vector<int>& container, int value) {
+template <typename T, typename U>
+void AddValue(T &container, const U& value) {
 	container.emplace_back(value);
 }
 
